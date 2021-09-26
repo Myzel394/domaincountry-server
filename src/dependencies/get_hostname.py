@@ -19,7 +19,7 @@ async def get_hostname(
     except socket.gaierror:
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
-            detail="The given domain not valid."
+            detail="The given domain is not valid."
         )
 
     return domain
