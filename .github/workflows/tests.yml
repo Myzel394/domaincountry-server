@@ -1,0 +1,22 @@
+name: FastAPI Tests
+
+on:
+    - push
+
+jobs:
+    unit-tests:
+        runs-on: ubuntu-latest
+
+        steps:
+            -   name: Checkout 🛎
+                uses: actions/checkout@v2
+            # Python
+            -   name: Setup Python environment 🏗
+                uses: actions/setup-python@v2
+                with:
+                    python-version: "3.9"
+            -   name: Setup Poetry 🏗
+                uses: Gr1N/setup-poetry@v7
+
+            -   name: Run Tests 🧪
+                run: poetry run pytest
