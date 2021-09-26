@@ -1,0 +1,14 @@
+services:
+    server:
+        restart: unless-stopped
+        ports:
+            - "5980:5980"
+        build:
+            context: .
+        depends_on:
+            - redis
+
+    redis:
+        image: redis
+        ports:
+            - "6379:6379"

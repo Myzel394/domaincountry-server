@@ -1,4 +1,5 @@
 from fastapi import APIRouter, Depends
+from fastapi_redis_cache import cache_one_hour
 
 from src.dependencies import get_hostname
 from src.models import GetDomainInformationResult
@@ -13,6 +14,7 @@ router = APIRouter()
 
 
 @router.get("/", response_model=GetDomainInformationResult)
+@cache_one_hour()
 async def get_domain_information(
     domain: str = Depends(get_hostname)
 ):
